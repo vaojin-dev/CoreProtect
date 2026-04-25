@@ -131,7 +131,11 @@ public class StringUtils {
     public static Integer[] convertArray(String[] array) {
         java.util.List<Integer> list = new java.util.ArrayList<>();
         for (String item : array) {
-            list.add(Integer.parseInt(item));
+            try {
+                list.add(Integer.parseInt(item));
+            } catch (NumberFormatException e) {
+                list.add(0);
+            }
         }
         return list.toArray(new Integer[list.size()]);
     }
